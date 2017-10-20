@@ -3,29 +3,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include "helpers.h"
 
-struct statuss {
-    float setV;
-    float setI;
-    float measV;
-    float measI;
-    float measBatt;
-    float convsp;
-    bool curlim;
-    bool enconv;    
-};
+#define NEW_LINE 0x0D
 
-struct states {
-    bool pwrdn;
-    bool connected;
-    bool startup;
-    bool lowBatt;
-    bool updateThisLoop;
-    int loopCount;
-};
 
-struct states state;
-struct statuss status;
 
 
 void startup()
@@ -57,10 +39,20 @@ void updateStatus()
     //get measurements
 }
 
-#define NEW_LINE 0x0D
+
 typedef union float_char_union {
     float fl;
     char ch[4];
+};
+
+typedef union status_char_union {
+    struct statuss st;
+    char ch[26];
+};
+
+typedef union state_char_union {
+    struct states st;
+    char ch[9];
 };
 
 void getData(uint8_t length, char* buffer)
@@ -100,17 +92,17 @@ void sendResponse(bool type, uint8_t length, char *buffer)
     
 }
 
-/* Command Set                      Returns
-     * 0x01 +4B Set Voltage             0
-     * 0x02 +4B Set Current             0
-     * 0x03     Get Voltage SP          4B float
-     * 0x04     Get Current SP          4B float
-     * 0x05     Return State Struct     TBD
-     * 0x06     Get Measured Voltage    4B float
-     * 0x07     Get Measured Current    4B float
-     * 0x08     Get Battery Voltage     4B float
-     * All responses followed by new line
-     */
+/*	Command Set				Returns
+	* 0x01 +4B Set Voltage             0
+	* 0x02 +4B Set Current             0
+	* 0x03     Get Voltage SP          4B float
+	* 0x04     Get Current SP          4B float
+	* 0x05     Return State Struct     TBD
+	* 0x06     Get Measured Voltage    4B float
+	* 0x07     Get Measured Current    4B float
+	* 0x08     Get Battery Voltage     4B float
+	* All responses followed by new line
+*/
 int getCommands()
 {
     if(!EUSART_DataReady) return 0x00;
@@ -120,6 +112,7 @@ int getCommands()
     float value;
     value = 1.5;
     union float_char_union fcu;
+    union state_char_union scu;
     switch (input)
     {
             case 0x01:
@@ -131,42 +124,42 @@ int getCommands()
             case 0x03:
 	    {
 		//get the voltage
-		fcu.fl = value;
+		fcu.fl = status.setV;
 		sendResponse(1,4,fcu.ch);
                 break;
 	    }
             case 0x04:
 	    {
-		//get the voltage
-		fcu.fl = value;
+		//get the current
+		fcu.fl = status.setI;
 		sendResponse(1,4,fcu.ch);
                 break;
 	    }
             case 0x05:
 	    {
-		//get the voltage
-		fcu.fl = value;
-		sendResponse(1,4,fcu.ch);
+		//get the state Struct
+		scu.st = state;
+		sendResponse(1,9,scu.ch);
                 break;
 	    }
             case 0x06:
 	    {
-		//get the voltage
-		fcu.fl = value;
+		//get the measured voltage
+		fcu.fl = status.measV;
 		sendResponse(1,4,fcu.ch);
                 break;
 	    }
             case 0x07:
 	    {
-		//get the voltage
-		fcu.fl = value;
+		//get the measured current
+		fcu.fl = status.measI;
 		sendResponse(1,4,fcu.ch);
                 break;
 	    }
 	    case 0x08:
 	    {
-		//get the voltage
-		fcu.fl = value;
+		//get the battery voltage
+		fcu.fl = status.measBatt;
 		sendResponse(1,4,fcu.ch);
                 break;
 	    }

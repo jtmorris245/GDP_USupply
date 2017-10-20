@@ -89,7 +89,8 @@ void main(void)
         if(state.startup)
 	{
 	    state.startup = false;
-	    sendResponse(1,1,*'R');
+	    char resp = 'R';
+	    sendResponse(1,1,&resp);
 	    while(!EUSART_DataReady);
 	    getCommands();
 	}
@@ -104,7 +105,7 @@ void main(void)
 	    //Report Low Battery
 	    //Shutdown
 	}
-	else if(testTolerance(VTol,status.setV,status.measV)&& !ignErr)
+	else if(testTolerance(VTol,status.setV,status.measV))
 	{
 	    loopspeed = 1;
 	    //Report Error
