@@ -105,7 +105,7 @@ void sendResponse(bool type, uint8_t length, char *buffer)
 */
 int getCommands()
 {
-    if(!EUSART_DataReady) return 0x00;
+    if(!EUSART_DataReady) return 0x01;
     //Serial input
     char input;
     getData(1,&input);
@@ -116,9 +116,19 @@ int getCommands()
     switch (input)
     {
             case 0x01:
+		//set voltage
+		char V[4];
+		getData(4,&V);
+		fcu.ch = V;
+		status.setV = fcu.fl;
 		sendResponse(0,0,0);
                 break;
             case 0x02:
+		//set Current
+		char I[4];
+		getData(4,&I);
+		fcu.ch = I;
+		status.setI = fcu.fl;
 		sendResponse(0,0,0);
                 break;
             case 0x03:
