@@ -12,35 +12,36 @@
 extern "C" {
 #endif
 
-void startup();
-void updateStatus();
-void getData(uint8_t length, char* buffer);
-void sendResponse(bool type, uint8_t length, char *buffer);
-int getCommands();
-bool testTolerance(float tol,float tgt,float act);
-void updateOutputs();
-struct statuss {
-    float setV;
-    float setI;
-    float measV;
-    float measI;
-    float measBatt;
-    float convsp;
-    bool curlim;
-    bool enconv;    
-}; // 26 Bytes
+    void startup();
+    void updateStatus();
+    void getData(uint8_t length, char* buffer);
+    void sendResponse(bool type, uint8_t length, char *buffer);
+    int getCommands();
+    bool testTolerance(float tol, float tgt, float act);
+    void updateOutputs();
 
-struct states {
-    bool pwrdn;
-    bool connected;
-    bool startup;
-    bool lowBatt;
-    bool updateThisLoop;
-    int loopCount;
-};//9 bytes
+    struct statuss {
+        float setV;
+        float setI;
+        float measV;
+        float measI;
+        float measBatt;
+        float convsp;
+        bool curlim;
+        bool enconv;
+    }; // 26 Bytes
 
-struct states state;
-struct statuss status;
+    struct states {
+        bool pwrdn;
+        bool connected;
+        bool startup;
+        bool lowBatt;
+        bool updateThisLoop;
+        int loopCount;
+    }; //9 bytes
+
+    struct states state;
+    struct statuss status;
 
 #ifdef	__cplusplus
 }

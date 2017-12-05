@@ -1,12 +1,12 @@
-<config configVersion="1.1" device="PIC16F1619" coreVersion="4.26">
+<config configVersion="1.1" device="PIC16F1619" coreVersion="4.26.1">
    <usedClasses class="java.util.HashMap">
-      <entry>
-         <string>System Module</string>
-         <string>class com.microchip.mcc.mcu8.systemManager.SystemManager</string>
-      </entry>
       <entry>
          <string>ADC</string>
          <string>class com.microchip.mcc.mcu8.modules.adc.ADC</string>
+      </entry>
+      <entry>
+         <string>System Module</string>
+         <string>class com.microchip.mcc.mcu8.systemManager.SystemManager</string>
       </entry>
       <entry>
          <string>EUSART</string>
@@ -38,7 +38,7 @@
       </entry>
    </usedClasses>
    <usedLibraries class="java.util.ArrayList">
-      <ILibraryFile class="com.microchip.mcc.core.library.BaseLibraryFile" libraryClass="com.microchip.mcc.mcu8.Mcu8PeripheralLibrary" version="1.45"/>
+      <ILibraryFile class="com.microchip.mcc.runner.services.RunnerLibraryFile" libraryClass="com.microchip.mcc.mcu8.Mcu8PeripheralLibrary" version="1.45"/>
    </usedLibraries>
    <tokenMap class="java.util.HashMap">
       <entry>
@@ -1110,12 +1110,12 @@
          <value>9</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="EUSART" registerAlias="RCSTA" settingAlias="SPEN"/>
-         <value>disabled</value>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="MEMORY" registerAlias="PMDATL" settingAlias="PMDATL"/>
          <value>0</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="EUSART" registerAlias="RCSTA" settingAlias="SPEN"/>
+         <value>disabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="System Module" registerAlias="CONFIG1" settingAlias="FCMEN" alias="ON"/>
@@ -1822,12 +1822,12 @@
          <value>1</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="EUSART" registerAlias="BAUDCON" settingAlias="SCKP" alias="Inverted"/>
-         <value>1</value>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="MEMORY" registerAlias="PMCON1" settingAlias="FREE"/>
          <value>write</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="EUSART" registerAlias="BAUDCON" settingAlias="SCKP" alias="Inverted"/>
+         <value>1</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="IOCCN" settingAlias="IOCCN6"/>
@@ -2418,11 +2418,11 @@
          <value>disabled</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="EUSART" registerAlias="TXSTA" settingAlias="TRMT" alias="TSR_full"/>
+         <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="MEMORY" registerAlias="PMCON1"/>
          <value>0</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="MEMORY" registerAlias="PMCON1"/>
+         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="EUSART" registerAlias="TXSTA" settingAlias="TRMT" alias="TSR_full"/>
          <value>0</value>
       </entry>
       <entry>
@@ -2994,11 +2994,11 @@
          <value>disabled</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="EUSART" registerAlias="RCSTA" settingAlias="RX9" alias="8-bit"/>
+         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="MEMORY" registerAlias="PMCON1" settingAlias="LWLO" alias="load_latch_write"/>
          <value>0</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="MEMORY" registerAlias="PMCON1" settingAlias="LWLO" alias="load_latch_write"/>
+         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="EUSART" registerAlias="RCSTA" settingAlias="RX9" alias="8-bit"/>
          <value>0</value>
       </entry>
       <entry>
@@ -4232,44 +4232,44 @@
    </tokenMap>
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
-         <file>mcc_generated_files\mcc.h</file>
-         <hash>b97e5fbc3fc8e5c6b6e39431c4679d008309f570fe32c835191ba630f4059eb3</hash>
+         <file>mcc_generated_files/pin_manager.h</file>
+         <hash>602de74c0d7a62b807ba31c03a0c48f7bd9490258eec4467d22903d9cd23b4b2</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\memory.c</file>
-         <hash>7d474d4b2e5cf1bc17c9db70753b49f46c2b32d481c3f01099359f0bc9ec2f10</hash>
+         <file>mcc_generated_files/memory.h</file>
+         <hash>13242f223ee494f636ba44c4bd08d689c1952661baa5f39a2e7e50df795a0bd0</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\pin_manager.h</file>
-         <hash>281cac8e9d4d8b0863833461a15b6021b5e123b1638632a18b49faf6d1e61501</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\adc.h</file>
-         <hash>0363d29b47323525432ed2a9a50b7d9e84d24133fd2c0d85ea7f9db18eafcc46</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\eusart.c</file>
-         <hash>d0d8221859014765eea5e061a974f34f5e2d299bd466ffc5cb486af1c17abfe6</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\pin_manager.c</file>
-         <hash>9d42782602cb0b0d714db21756fc7349c50451008b5bd2111ee9d37063677bc6</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\eusart.h</file>
-         <hash>9e18b610c083d50495d168c62a7a29cfc54e7f24e74fb218d35a5551ad436217</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\adc.c</file>
+         <file>mcc_generated_files/adc.c</file>
          <hash>c02bd097e8f9c9afa4a2ccbb4e0ef4634200205cbfba2c2312e74851f3ff1b03</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\mcc.c</file>
+         <file>mcc_generated_files/memory.c</file>
+         <hash>7d474d4b2e5cf1bc17c9db70753b49f46c2b32d481c3f01099359f0bc9ec2f10</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files/eusart.c</file>
+         <hash>d0d8221859014765eea5e061a974f34f5e2d299bd466ffc5cb486af1c17abfe6</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files/mcc.h</file>
+         <hash>0d307f39fa07422304dd81c97093997e7daf67799df45cd0eb335eaa9cba3da2</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files/eusart.h</file>
+         <hash>9e18b610c083d50495d168c62a7a29cfc54e7f24e74fb218d35a5551ad436217</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files/adc.h</file>
+         <hash>0363d29b47323525432ed2a9a50b7d9e84d24133fd2c0d85ea7f9db18eafcc46</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files/mcc.c</file>
          <hash>216f8668f9c65087c31f90e59f4a440421e6d912f3408b1572ec4a42ad67651f</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\memory.h</file>
-         <hash>13242f223ee494f636ba44c4bd08d689c1952661baa5f39a2e7e50df795a0bd0</hash>
+         <file>mcc_generated_files/pin_manager.c</file>
+         <hash>e116363aaed56e47e8411d6229032650418c8dbb93ae2f2af0b3ea07dfcbf75a</hash>
       </entry>
    </generatedFileHashHistoryMap>
 </config>
