@@ -91,7 +91,7 @@ void main(void)
 	    state.startup = false;
 	    char resp = 'R';
 	    sendResponse(1,1,&resp);
-	    while(!EUSART_DataReady);
+	    while(!EUSART1_DataReady);
 	    getCommands();
 	}
 	else if(state.pwrdn)

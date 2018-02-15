@@ -51,7 +51,7 @@ void getData(uint8_t length, char* buffer) {
     // Reconstruct buffer array from pointer
     memset(buffer, 0, length * sizeof (*buffer));
     for (uint8_t i = sizeof (buffer); i != 0; i--) {
-        buffer[sizeof (buffer) - i] = EUSART_Read();
+        buffer[sizeof (buffer) - i] = EUSART1_Read();
     }
 }
 
@@ -69,11 +69,11 @@ void sendResponse(bool type, uint8_t length, char *buffer) {
         memset(buffer, 0, length * sizeof (*buffer));
         // Iterate on buffer and send byte by byte
         for (uint8_t i = sizeof (buffer); i != 0; i--) {
-            EUSART_Write(buffer[sizeof (buffer) - i]);
+            EUSART1_Write(buffer[sizeof (buffer) - i]);
         }
-        EUSART_Write(NEW_LINE);
+        EUSART1_Write(NEW_LINE);
     } else {
-        EUSART_Write(NEW_LINE);
+        EUSART1_Write(NEW_LINE);
     }
 
 }
@@ -90,7 +90,7 @@ void sendResponse(bool type, uint8_t length, char *buffer) {
  * All responses followed by new line
  */
 int getCommands() {
-    if (!EUSART_DataReady) return 0x01;
+    if (!EUSART1_DataReady) return 0x01;
     //Serial input
     char input;
     getData(1, &input);
