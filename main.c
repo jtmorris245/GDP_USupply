@@ -49,6 +49,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "helpers.h"
+#include "i2cdriver.h"
 // helpers contains comms & utility functions.
 
 // Configuration options:

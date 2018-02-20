@@ -15,9 +15,13 @@
         <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
         <itemPath>mcc_generated_files/i2c1.h</itemPath>
         <itemPath>mcc_generated_files/eusart2.h</itemPath>
+        <itemPath>mcc_generated_files/tmr2.h</itemPath>
+        <itemPath>mcc_generated_files/pwm3.h</itemPath>
       </logicalFolder>
       <itemPath>helpers.h</itemPath>
       <itemPath>newxc8_header.h</itemPath>
+      <itemPath>i2cdriver.c</itemPath>
+      <itemPath>i2cdriver.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -37,6 +41,8 @@
         <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
         <itemPath>mcc_generated_files/i2c1.c</itemPath>
         <itemPath>mcc_generated_files/eusart2.c</itemPath>
+        <itemPath>mcc_generated_files/tmr2.c</itemPath>
+        <itemPath>mcc_generated_files/pwm3.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>helpers.c</itemPath>
