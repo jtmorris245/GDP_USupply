@@ -18,6 +18,7 @@ extern "C" {
 #define DACADDR     0x62
 
     bool initDevices();
+    bool getBusVoltage(float *voltage);
 
 #ifdef	__cplusplus
 }
