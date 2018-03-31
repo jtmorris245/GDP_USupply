@@ -37,7 +37,7 @@ bool initDevices()
     //Shunt doesn't require any setup for basic operation. For current/Power
     //will need to calculate / measure calibration values.
     unsigned short calibrationValue = calcShuntCalVal(2.0f,1.0f);
-    data = {0x05,0}; // Calibration register addr
+    int data[2] = {0x05,0}; // Calibration register addr
     I2C1_MasterWrite(&data,1,SHUNTADDR,resp);
     if(resp != I2C1_MESSAGE_COMPLETE ) return 1;
     //Split it into 2 bytes to send
