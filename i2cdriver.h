@@ -19,6 +19,7 @@ extern "C" {
 
     bool initDevices();
     bool getBusVoltage(float *voltage);
+    unsigned short calcShuntCalVal(float maxCurrent, float RShunt);
 
 #ifdef	__cplusplus
 }

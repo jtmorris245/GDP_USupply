@@ -67,5 +67,14 @@ bool getBusVoltage(float *voltage)
     *voltage = recon * 0.004f;
     return false;
 }
-
+///unsigned short calcShuntCalVal(float maxCurrent, float RShunt)
+///Calculates the calibration register value required.
+///Returns an unsigned short to be sent to the cal register.
+unsigned short calcShuntCalVal(float maxCurrent, float RShunt)
+{
+    float intval = 0.04096 ;
+    float currentLSB = maxCurrent / 32768;
+    float calval = intval/(currentLSB*RShunt);
+    return (unsigned short)calval;
+}
 
