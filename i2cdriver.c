@@ -34,14 +34,19 @@ bool initDevices()
     I2C1_MasterWrite(&data,1,EPOTADDR,resp);
     if(resp != I2C1_MESSAGE_COMPLETE) return 1;
     
-    //@TODO Write the Calibration values to shunt measurement.
     //Shunt doesn't require any setup for basic operation. For current/Power
     //will need to calculate / measure calibration values.
-    
-    
-    
-    //@TODO Init the EPOT and shunt measurement.
-    
+    unsigned short calibrationValue = calcShuntCalVal(2.0f,1.0f);
+    data = {0x05,0}; // Calibration register addr
+    I2C1_MasterWrite(&data,1,SHUNTADDR,resp);
+    if(resp != I2C1_MESSAGE_COMPLETE ) return 1;
+    //Split it into 2 bytes to send
+    data[0] = calibrationValue & 0xff;
+    data[1] = (calibrationValue >> 8) & 0xff;
+    // Send 2 bytes to the addr already set.
+    I2C1_MasterWrite(&data,2,SHUNTADDR,resp);
+    if(resp != I2C1_MESSAGE_COMPLETE ) return 1;
+    // Nothing failed, so report success.
     return false;
     
 }
