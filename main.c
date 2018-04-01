@@ -54,6 +54,8 @@
 
 // Configuration options:
 const float VTol = 0.05;
+#define maxCurrent  2.0f;
+#define shuntRes  1.0f;
 
 /*
                          Main application
