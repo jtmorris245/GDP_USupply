@@ -83,7 +83,7 @@ void main(void)
     startup(); // Initialise all values and communications to other components
     while (1)
     {
-	
+	_delay(1);
 	//Used to prevent excessive polling
 	if(state.loopCount != 100*loopspeed || state.updateThisLoop)
 	{state.loopCount ++; continue;}
