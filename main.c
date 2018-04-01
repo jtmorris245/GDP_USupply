@@ -81,6 +81,10 @@ void main(void)
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
     startup(); // Initialise all values and communications to other components
+    if(initDevices()) 
+    {
+        //@TODO Error reporting
+    }
     while (1)
     {
 	_delay(1);
