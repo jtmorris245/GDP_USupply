@@ -54,6 +54,8 @@
 
 // Configuration options:
 const float VTol = 0.05;
+#define maxCurrent  2.0f;
+#define shuntRes  1.0f;
 
 /*
                          Main application
@@ -81,7 +83,7 @@ void main(void)
     startup(); // Initialise all values and communications to other components
     while (1)
     {
-	
+	_delay(1);
 	//Used to prevent excessive polling
 	if(state.loopCount != 100*loopspeed || state.updateThisLoop)
 	{state.loopCount ++; continue;}
