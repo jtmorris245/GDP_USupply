@@ -72,6 +72,30 @@ bool getBusVoltage(float *voltage)
     *voltage = recon * 0.004f;
     return false;
 }
+
+///bool getShuntCurrent(float maxCurrent float *current);
+///Gets the calculated shunt current from the device.
+///returns true if an error occurs.
+bool getShuntCurrent(float maxCurrent,float *current)
+{
+    int data[2];
+    I2C1_MESSAGE_STATUS resp;
+    int data[2] = {0x03,0};
+    // write to address register
+    I2C1_MasterWrite(&data,1,SHUNTADDR,resp);
+    if(resp != I2C1_MESSAGE_COMPLETE ) return 1;
+    //read from this register
+    char datares[2] = {0,0};
+    I2C1_MasterRead(datares,2,SHUNTADDR,resp);
+    if(resp != I2C1_MESSAGE_COMPLETE ) return 1;
+    //extract required data from bytes... RSH 3 for unused bytes.
+    // Format:
+    // BD12 - BD11 ... BD0 - NONE - CNVR - OVF
+    short recon = ((((short)datares[0]) << 8) | datares[1])>>3;
+    //LSB = 4mv
+    *current = recon*(maxCurrent / 32768);
+    return false;
+}
 ///unsigned short calcShuntCalVal(float maxCurrent, float RShunt)
 ///Calculates the calibration register value required.
 ///Returns an unsigned short to be sent to the cal register.
