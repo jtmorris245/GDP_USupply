@@ -29,7 +29,15 @@ bool ignErr;
  * Auto Updates Status Struct with latest measurements.
  */
 void updateStatus() {
-    //get measurements
+     
+        ADC_Initialize();
+        adc_result_t resV = ADC_GetConversion(adc_channel_t.channel_ANA4);//ADC Vout = output voltage
+        status.measV = resV ;
+        adc_result_t resI = ADC_GetConversion(adc_channel_t.channel_ANA5);
+        status.measI = resI ;    
+        adc_result_t resbat= ADC_GetConversion(adc_channel_t.channel_ANB7);
+        status.measI = resbat ;
+        status.curlim = IO_RC4_GetValue();
 }
 
 typedef union float_char_union {
