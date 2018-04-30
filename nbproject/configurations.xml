@@ -22,6 +22,8 @@
       <itemPath>newxc8_header.h</itemPath>
       <itemPath>i2cdriver.c</itemPath>
       <itemPath>i2cdriver.h</itemPath>
+      <itemPath>gpsdriver.c</itemPath>
+      <itemPath>gpsdriver.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
